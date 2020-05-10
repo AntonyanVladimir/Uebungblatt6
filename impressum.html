@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- Insb. für Mobilgeräte: Anpassen an Gerätegröße, Zoom zulassen -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Web By Step - Beispielblog / Impressum</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/blog.css">
+
+</head>
+<body onload="initPage();">
+	<header class="container mb-5">
+		<a href="index.html" title="zur Startseite">
+			<img title="Logo" src="images/linux-tux.svg" alt="Logo" class="logo">
+		<h1>Web By Step - Beispielblog</h1></a>
+		<nav>Navigation</nav>
+	</header>
+	<div class="container">
+		<div class="row">
+			<!-- Breite 3/4 (9/12) -->
+			<main class="col-12 col-md-9">
+		<h1>Impressum</h1>
+		Hier stehen die Informationen zum Impressum
+			</main>
+
+			<!-- Breite 1/4 (3/12) -->
+			<aside id="sidebar" class="col-12 col-md-3 mt-5"></aside>
+
+		</div> <!-- row -->
+	</div> <!-- container -->
+	<footer class="container mb-3">
+	<hr>
+	<a href="impressum.html">Impressum</a> | Copyright | <a href="kontakt.html">Kontakt</a>
+	</footer>
+<script src="js/data.js"></script>
+<script src="js/blog.js"></script>
+<script>
+"use strict";
+
+function initPage() {
+	// Sidebar erzeugen
+	var sidebar = document.getElementById('sidebar');
+	sidebar.appendChild(createSidebar(articles));
+};
+</script>
+</body>
+</html>

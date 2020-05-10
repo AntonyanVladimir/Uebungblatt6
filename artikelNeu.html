@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- Insb. für Mobilgeräte: Anpassen an Gerätegröße, Zoom zulassen -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Web By Step - Beispielblog</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/blog.css">
+
+</head>
+<body onload="initPage();">
+ 	<!-- Kopfteil -->
+	<header class="container mb-5">
+		<a href="index.html" title="zur Startseite">
+			<img title="Logo" src="images/linux-tux.svg" alt="Logo" class="logo">
+		<h1>Web By Step - Beispielblog</h1></a>
+		<nav>Navigation</nav>
+	</header>
+	<div class="container">
+		<div class="row">
+			<!-- Breite 3/4 (9/12) -->
+			<main class="col-12 col-md-9">
+				<h1>Neuer Artikel</h1>
+				
+				<form action="index.html" method="post">
+				
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Überschrift</span>
+						</div>
+						<input class="form-control" id="ueberschrift" name="ueberschrift" type="text">
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Autor</span>
+						</div>
+						<input class="form-control" id="autor" name="autor" type="text">
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Datum</span>
+						</div>
+						<input class="form-control" id="datum" name="datum" type="date">
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Anrisstext</span>
+						</div>
+						<textarea class="form-control" id="anriss" name="anriss" cols="60" rows="4"></textarea>
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Artikeltext</span>
+						</div>
+						<textarea class="form-control" id="text" name="text" cols="60" rows="8"></textarea>
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Tags (kommagetrennt)</span>
+						</div>
+						<input class="form-control" id="tags" name="tags" type="text">
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Bild</span>
+						</div>
+						<input class="form-control" id="bild" name="bild" type="file">
+					</div>
+
+					<button id="btnSubmit" type="submit" class="btn btn-primary">Veröffentlichen</button>
+				</form>
+			</main>
+
+			<!-- Breite 1/4 (3/12) -->
+			<aside id="sidebar" class="col-12 col-md-3 mt-5"></aside>
+
+		</div> <!-- row -->
+	</div> <!-- container -->
+	<footer class="container mb-3">
+	<hr>
+	<a href="impressum.html">Impressum</a> | Copyright | <a href="kontakt.html">Kontakt</a>
+	</footer>
+<script src="js/data.js"></script>
+<script src="js/blog.js"></script>
+<script>
+"use strict";
+
+function initPage() {
+	// Sidebar erzeugen
+	var sidebar = document.getElementById('sidebar');
+	sidebar.appendChild(createSidebar(articles));
+	
+	// Eventhandler an Submit-Button hängen
+	document.getElementById('btnSubmit').addEventListener('click', function(event) {
+		event.preventDefault();
+		// Formular auslesen
+		readForm();
+	});
+	
+	// Artikel in das Formular laden
+	var a = articles[0];
+	document.getElementById('ueberschrift').value = a.ueberschrift;
+	document.getElementById('autor').value = a.autor;
+	// Achtung! Datumsformat ist falsch, das ist jetzt noch belanglos
+	document.getElementById('datum').value = a.datum;
+	document.getElementById('anriss').value = a.anriss;
+	document.getElementById('text').value = a.text;
+	// Regulärer Ausdruck zum Ersetzen der Kommata ',' durch ', ' (mit Space)
+	document.getElementById('tags').value = a.tags.toString().replace(/,/g, ', ');	
+};
+
+function readForm() {
+	// Formularelemente auslesen
+	var article = {
+			ueberschrift: document.getElementById('ueberschrift').value,
+			autor: document.getElementById('autor').value,
+			datum: document.getElementById('datum').value,
+			anriss: document.getElementById('anriss').value,
+			text: document.getElementById('text').value
+	};
+	
+	// Tags hinzufügen, werden Kommagetrennt erwartet
+	var tags = document.getElementById('tags').value;
+	// Whitespace entfernen mittels Regex
+	tags = tags.replace(/\s/g, '');
+	// an Komma splitten und ins Objekt schreiben
+	article.tags = tags.split(',');
+	
+	console.log(article);
+}
+</script>
+</body>
+</html>

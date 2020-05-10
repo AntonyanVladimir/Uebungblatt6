@@ -1,0 +1,22 @@
+.textimg {
+	float: left;
+	width: 80px;
+	margin-right: 10px;
+}
+
+.logo{
+	height: 25px;
+	width: auto;
+}
+
+/* Tags in der Tagcloud */
+.tag-1 {font-size: small;}
+.tag-2 {font-size: medium;}
+.tag-3 {font-size: large;}
+.tag-4 {font-size: larger;}
+.tag-5 {font-size: x-large;}
+
+ img{
+	width: 350px;
+	height: auto;
+} 
