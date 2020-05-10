@@ -2,12 +2,10 @@
 
 
 
-
-	
 	function createArticle(article) {
 		// Artikelinhalt zusammenbauen
 		
-		var $newArticle = $(`<article><h2><a href="artikel.html"> ${article.ueberschrift} </a></h2>
+		var $newArticle = $(`<article id=${article.id}><h2><a href="artikel.html"> ${article.ueberschrift} </a></h2>
 		<p> ${article.datum}  Uhr von  ${article.autor} </p> 
 		<p><b> ${article.anriss} </b></p></article>`);
 	
@@ -29,7 +27,7 @@
 		<a href="teilenEmail.html">Teilen via E-Mail</a> 
 		</div>`));
 		return $newArticle;
-	}
+	};
 	
 
 
@@ -71,9 +69,6 @@ function createSidebar(articles) {
 	return $sidebar;	
 };
 
-$('#searchBtn').click(function() {
-	window.location.href='suchergebnis.html';
-});
 
 
 /**
@@ -140,9 +135,11 @@ function createTagCloud(articles) {
 	}
 	
 	return $tagcloud;
-}
+};
 
 
-$('#searchBtn').click(function() {
-	window.location.href='suchergebnis.html';
-});
+
+
+
+	
+	

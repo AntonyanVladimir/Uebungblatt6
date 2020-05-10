@@ -3,6 +3,7 @@
 //Testdaten
 var articles = [
 	{
+		id:'article1',
 		ueberschrift: 'HTML Dokumente',
 		autor: 'Thomas Richter',
 		datum: '17. Januar 2018 20:48',
@@ -22,6 +23,7 @@ var articles = [
 		tags: ['HTML5', 'Dokument', 'HTTP']
 	},
 	{
+		id:'article2',
 		ueberschrift: 'HTML Elemente',
 		autor: 'Thomas Richter',
 		datum: '16. Januar 2018 21:14',
@@ -31,6 +33,7 @@ var articles = [
 		tags: ['HTML5', 'Element']
 	},	
 	{
+		id:'article3',
 		ueberschrift: 'Semantische Strukturierung von HTML-Seiten',
 		autor: 'Thomas Richter',
 		datum: '16. Januar 2018 19:03',

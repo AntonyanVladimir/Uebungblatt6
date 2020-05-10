@@ -15,7 +15,7 @@ https://getbootstrap.com/docs/4.0/layout/grid/
  -->
 
 <link rel="stylesheet" href="css/blog.css">
-
+<script src="jquery3.5.1.js"></script>
 </head>
 <body onload="initPage();">
 <!-- Struktur des HTML-Dokuments:
@@ -52,25 +52,20 @@ https://getbootstrap.com/docs/4.0/layout/grid/
 <script src="js/data.js"></script>
 <script src="js/blog.js"></script>
 <script>
-"use strict";
+	"use strict";
+	
+	
+	for(let i = 0; i < articles.length; i++)
+		$('#inhalt').append(createArticle(articles[i]));
+		// // Sidebar erzeugen
+		 var sidebar = $('#sidebar');
+		 sidebar.append(createSidebar(articles));
 
-function initPage() {
-	// Artikel erzeugen
-	
-	// DOM-Knoten für den Inhalt holen (<main...>)
-	var main = document.getElementById('inhalt');
-	
-	// Array durchlaufen, jeder Eintrag ist ein Blogeintrag-Objekt
-	for (var i = 0; i < articles.length; i++) {
-		//und Artikel einhängen
-		main.appendChild(createArticle(articles[i]));
-	}
-	
-	// Sidebar erzeugen
-	var sidebar = document.getElementById('sidebar');
-	sidebar.appendChild(createSidebar(articles));
-};
-</script>
+		 //Aufgabe 4
+		 $('#searchBtn').click(function() {
+	 window.location.href='suchergebnis.html';	
+ 	})
+	</script> 
 
 </body>
 </html>

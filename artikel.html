@@ -12,7 +12,7 @@
 <script src="./jquery3.5.1.js"></script>
 
 </head>
-<body onload="initPage()">
+<body>
 	<header class="container mb-5">
 		<a href="index.html" title="zur Startseite">
 		<img title="Logo" src="images/linux-tux.svg" alt="Logo" class="logo">
@@ -36,22 +36,7 @@
 	<h1 id="header">Überschrift</h1>
 	
 	
-	<script>
-		"use strict";
-		
-		function initPage() {
-			$(document).ready(()=>alert("die seite wurde gealaden."))
-			
-			var main = $('#inhalt');
-			
-			//und Artikel einhängen
-			main.append(createArticle(articles[2]));
-			
-			// // Sidebar erzeugen
-			 var sidebar = $('#sidebar');
-			 sidebar.append(createSidebar(articles));
-		};
-		</script>
+	
 
 <script src="js/data.js"></script>
 <script src="js/blog.js"></script>
@@ -61,5 +46,20 @@
 	});
 	</script>
 
+<script>
+	"use strict";
+	
+		//und Artikel einhängen
+		//main.append(createArticle(articles[2]));
+		$('#inhalt').append(createArticle(articles[2]));
+		// // Sidebar erzeugen
+		 var sidebar = $('#sidebar');
+		 sidebar.append(createSidebar(articles));
+
+		 //Aufgabe 4
+		 $('#searchBtn').click(function() {
+	 window.location.href='suchergebnis.html';	
+ 	})
+	</script> 
 </body>
 </html>
