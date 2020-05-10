@@ -48,10 +48,12 @@
 
 <script>
 	"use strict";
-	
+	const urlParams = new URLSearchParams(window.location.search);
+	const id = urlParams.get('id');
+		let article = getArticleById(id);
 		//und Artikel einhängen
 		//main.append(createArticle(articles[2]));
-		$('#inhalt').append(createArticle(articles[2]));
+		$('#inhalt').append(createArticle(article));
 		// // Sidebar erzeugen
 		 var sidebar = $('#sidebar');
 		 sidebar.append(createSidebar(articles));
@@ -59,7 +61,15 @@
 		 //Aufgabe 4
 		 $('#searchBtn').click(function() {
 	 window.location.href='suchergebnis.html';	
- 	})
+	 })
+	 
+
+	function getArticleById(id){
+		for(let article of articles){
+		if(article.id === id)
+		return article;
+	}
+	 }
 	</script> 
 </body>
 </html>

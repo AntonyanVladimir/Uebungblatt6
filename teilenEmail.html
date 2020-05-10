@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="css/blog.css">
-
+<script src="jquery3.5.1.js"></script>
 <script>
 "use strict";
 
@@ -46,10 +46,10 @@ var sendMail = function() {
 							<span class="input-group-text">Mitteilung</span>
 						</div>
 						<textarea class="form-control" id="mitteilung" name="mitteilung" cols="60" rows="6">
-Schau Dir diesen Artikel mal an:
-HTML Elemente http://myblog.local/artikel.html
-						
-Viele Grüße,				
+				Schau Dir diesen Artikel mal an:
+				HTML Elemente http://myblog.local/artikel.html
+										
+				Viele Grüße,				
 						</textarea>
 					</div>
 				
@@ -70,12 +70,11 @@ Viele Grüße,
 <script src="js/blog.js"></script>
 <script>
 "use strict";
+ var sidebar = $('#sidebar');
+ sidebar.append(createSidebar(articles));
 
-function initPage() {
-	// Sidebar erzeugen
-	var sidebar = document.getElementById('sidebar');
-	sidebar.appendChild(createSidebar(articles));
-};
+ $('#mitteilung').text(`Hallo Kinder...`)
+
 </script>
 </body>
 </html>

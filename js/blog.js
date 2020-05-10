@@ -5,7 +5,7 @@
 	function createArticle(article) {
 		// Artikelinhalt zusammenbauen
 		
-		var $newArticle = $(`<article id=${article.id}><h2><a href="artikel.html"> ${article.ueberschrift} </a></h2>
+		var $newArticle = $(`<article id=${article.id}><h2><a href="artikel.html?id=${article.id}"> ${article.ueberschrift} </a></h2>
 		<p> ${article.datum}  Uhr von  ${article.autor} </p> 
 		<p><b> ${article.anriss} </b></p></article>`);
 	
@@ -22,15 +22,15 @@
 		// Tags einfügen
 		// Social Media
 		$newArticle.append($(`<div>
-		<a title="Facebook" href="https://www.facebook.com/share.php?u=https%3A%2F%2Fmyblog.local%2Fartikelurl" target="_blank">Teilen auf Facebook</a> | 
-		<a title="Twitter" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fmyblog.local%2Fartikelurl&amp;text=HTML%20Dokumente&amp;via=myblog&amp;lang=de" target="_blank">Twittern</a> | 
+		<a title="Facebook" href="https://www.facebook.com/share.php?u=artikel.html?id=${article.id}" target="_blank">Teilen auf Facebook</a> | 
+		<a title="Twitter" href="https://twitter.com/intent/tweet?url=artikel.html?id=${article.id}" target="_blank">Twittern</a> | 
 		<a href="teilenEmail.html">Teilen via E-Mail</a> 
 		</div>`));
 		return $newArticle;
 	};
 	
 
-
+// <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank"></a>
 /**
  * Erzeugt das DOM-Objekt für die $Sidebar. Hängt das Objekt NICHT ins DOM ein.
  * @param articles Array mit Artikel-Objekten
