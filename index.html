@@ -63,7 +63,8 @@ https://getbootstrap.com/docs/4.0/layout/grid/
 
 		 //Aufgabe 4
 		 $('#searchBtn').click(function() {
-	 window.location.href='suchergebnis.html';	
+			window.location.href=`suchergebnis.html?suchKey=${$('#searchquery').val()}`
+	 	
  	})
 	</script> 
 

@@ -50,7 +50,7 @@ function createSidebar(articles) {
 	$sidebar.append($(`<hr class="col-12"><div class="col-12 input-group input-group-sm pr-0">
 	<input id="searchquery" name="searchquery" type="text" class="form-control" aria-label="Suchen">
 	<div class="input-group-append">
-	<span id="searchBtn" class="btn btn-outline-primary">Suchen</span>
+	<a id="searchBtn" class="btn btn-outline-primary">Suchen</a>
 	</div>
 	</div>`)) 
 		
