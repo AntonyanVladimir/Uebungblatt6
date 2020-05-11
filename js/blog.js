@@ -1,7 +1,4 @@
 "use strict"
-
-
-
 	function createArticle(article) {
 		// Artikelinhalt zusammenbauen
 		
@@ -12,9 +9,9 @@
 		if(article.bild){
 			$newArticle.append($(`<div><img src=${article.bild}></div>`))
 		}
-	
+		
 		for (var i = 0; i < article.tags.length; i++) {
-			$newArticle.append($(`<a class="badge badge-pill badge-primary" href="tagliste.html"> ${article.tags[i]} </a> `));
+			$newArticle.append($(`<a class="badge badge-pill badge-primary" href=${getEncodedUri(article.tags[i])}> ${article.tags[i]} </a> `));
 		}
 		
 		// Text
@@ -24,12 +21,16 @@
 		$newArticle.append($(`<div>
 		<a title="Facebook" href="https://www.facebook.com/share.php?u=artikel.html?id=${article.id}" target="_blank">Teilen auf Facebook</a> | 
 		<a title="Twitter" href="https://twitter.com/intent/tweet?url=artikel.html?id=${article.id}" target="_blank">Twittern</a> | 
-		<a href="teilenEmail.html">Teilen via E-Mail</a> 
+		<a href="teilenEmail.html?id=${article.id}">Teilen via E-Mail</a> 
 		</div>`));
+		$newArticle.append($(`<a type="button" class="btn btn-warning" href="artikelNeu.html?id=${article.id}">Edit Article</a>`))
 		return $newArticle;
 	};
 	
-
+function getEncodedUri(tag){
+	let uri = `tagliste.html?tag=${tag}`;
+	return encodeURI(uri);
+}
 // <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank"></a>
 /**
  * Erzeugt das DOM-Objekt für die $Sidebar. Hängt das Objekt NICHT ins DOM ein.
@@ -131,7 +132,7 @@ function createTagCloud(articles) {
 		// Schriftgröße bestimmen, nach Häufigkeit in fünf Klassen 1 - 5 einordnen
 		// Häufigkeit des Tags steht in tagMap[tag]
 		var size = Math.ceil(Math.floor(tagMap[tag] / (max / 5.0)));
-		$tagcloud.append($(`<a class="tag-${size}" href="tagliste.html"> ${tag}</a>`));
+		$tagcloud.append($(`<a class="tag-${size}" href=${getEncodedUri(tag)}> ${tag}</a>`));
 	}
 	
 	return $tagcloud;
@@ -139,7 +140,14 @@ function createTagCloud(articles) {
 
 
 
+function getArticlesByTag(tag){
+	let articlesWithThisTag = [];
+	for(let article of articles){
+		for(let xTag of article.tags){
+			if(xTag===tag)
+			articlesWithThisTag.push(article);
+		}
+	}
 
-
-	
-	
+	return articlesWithThisTag;
+}

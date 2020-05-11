@@ -9,9 +9,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <link rel="stylesheet" href="css/blog.css">
+<script src="./jquery3.5.1.js"></script>
 
 </head>
-<body onload="initPage();">
+<body>
 	<header class="container mb-5">
 		<a href="index.html" title="zur Startseite">
 			<img title="Logo" src="images/linux-tux.svg" alt="Logo" class="logo">
@@ -24,12 +25,10 @@
 			<!-- Breite 3/4 (9/12) -->
 			<main class="col-12 col-md-9">
 		<h1>Getaggte Artikel</h1>
-		Alle Artikel mit dem Tag <span class="badge badge-pill badge-primary">HTML 5</span>:
 		
-		<ul>
-			<li>HTML Dokumente</li>
-			<li><a href="artikel.html">HTML Elemente</a></li>
-			<li>Semantische Strukturierung von HTML-Seiten</li>			
+		
+		<ul id="articleHeaders">
+				
 		</ul>
 		
 			</main>
@@ -48,11 +47,20 @@
 <script>
 "use strict";
 
-function initPage() {
-	// Sidebar erzeugen
-	var sidebar = document.getElementById('sidebar');
-	sidebar.appendChild(createSidebar(articles));
-};
+	$('#sidebar').append(createSidebar(articles));
+		 //Aufgabe 4
+		 $('#searchBtn').click(function() {
+	 window.location.href='suchergebnis.html';	
+	 })
+	 
+
+	let urlParams = new URLSearchParams(window.location.search);
+	let tag = decodeURI(urlParams.get('tag'));  
+	$('#articleHeaders').before(`<h5>Alle Artikel mit dem tag <span id="tagSpan">${tag}</span></h5>`)
+	articles = getArticlesByTag(tag);
+
+	for(let art of articles)
+	$('#articleHeaders').append(`<li>${art.ueberschrift}</li>`)
 </script>
 </body>
 </html>

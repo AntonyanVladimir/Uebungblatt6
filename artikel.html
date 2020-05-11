@@ -33,23 +33,17 @@
 	<hr>
 	<a href="impressum.html">Impressum</a> | Copyright | <a href="kontakt.html">Kontakt</a>
 	</footer>
-	<h1 id="header">Überschrift</h1>
-	
-	
 	
 
 <script src="js/data.js"></script>
 <script src="js/blog.js"></script>
-<script>
-	$('h1').click(function() {
-		window.location.href='suchergebnis.html';
-	});
-	</script>
 
 <script>
 	"use strict";
 	const urlParams = new URLSearchParams(window.location.search);
-	const id = urlParams.get('id');
+	let id = urlParams.get('id');
+	if(!id)
+	 id='article1';
 		let article = getArticleById(id);
 		//und Artikel einhängen
 		//main.append(createArticle(articles[2]));

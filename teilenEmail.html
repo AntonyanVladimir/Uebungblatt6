@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="css/blog.css">
-<script src="jquery3.5.1.js"></script>
+<script src="./jquery3.5.1.js"></script>
 <script>
 "use strict";
 
@@ -18,7 +18,7 @@ var sendMail = function() {
 </script>
 
 </head>
-<body onload="initPage();">
+<body>
  	<!-- Kopfteil -->
 	<header class="container mb-5">
 		<a href="index.html" title="zur Startseite">
@@ -72,8 +72,28 @@ var sendMail = function() {
 "use strict";
  var sidebar = $('#sidebar');
  sidebar.append(createSidebar(articles));
+ $('#searchBtn').click(function() {
+	 window.location.href='suchergebnis.html';	
+	 })
 
- $('#mitteilung').text(`Hallo Kinder...`)
+
+	const urlParams = new URLSearchParams(window.location.search);
+	const id = urlParams.get('id');
+
+
+if(id)	
+
+ $('#mitteilung').text(` Schau Dir diesen Artikel mal an:
+ HTML Elemente http://127.0.0.1:5500/artikel.html?id=${id}
+										
+Viele Grüße,	Vladimir`)
+
+else 
+
+$('#mitteilung').text(` Schau Dir diesen Artikel mal an:
+ HTML Elemente http://127.0.0.1:5500/artikel.html
+										
+Viele Grüße,	Vladimir`)
 
 </script>
 </body>

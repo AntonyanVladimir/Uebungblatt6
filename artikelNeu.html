@@ -9,9 +9,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <link rel="stylesheet" href="css/blog.css">
+<script src="./jquery3.5.1.js"></script>
 
 </head>
-<body onload="initPage();">
+<body>
  	<!-- Kopfteil -->
 	<header class="container mb-5">
 		<a href="index.html" title="zur Startseite">
@@ -91,32 +92,45 @@
 	</footer>
 <script src="js/data.js"></script>
 <script src="js/blog.js"></script>
-<script>
-"use strict";
 
-function initPage() {
-	// Sidebar erzeugen
-	var sidebar = document.getElementById('sidebar');
-	sidebar.appendChild(createSidebar(articles));
-	
+<script>
+	var sidebar = $('#sidebar');
+		 sidebar.append(createSidebar(articles));
+
+		 //Aufgabe 4
+		 $('#searchBtn').click(function() {
+	 window.location.href='suchergebnis.html';	
+	 })
+	 const urlParams = new URLSearchParams(window.location.search);
+	let id = urlParams.get('id');
+ 
+	let article = getArticleById(id);
+
+	 function getArticleById(id){
+		for(let article of articles){
+		if(article.id === id)
+		return article;
+	}
+}
+
 	// Eventhandler an Submit-Button hängen
 	document.getElementById('btnSubmit').addEventListener('click', function(event) {
 		event.preventDefault();
 		// Formular auslesen
 		readForm();
-	});
-	
+	})
+
 	// Artikel in das Formular laden
-	var a = articles[0];
-	document.getElementById('ueberschrift').value = a.ueberschrift;
-	document.getElementById('autor').value = a.autor;
-	// Achtung! Datumsformat ist falsch, das ist jetzt noch belanglos
-	document.getElementById('datum').value = a.datum;
-	document.getElementById('anriss').value = a.anriss;
-	document.getElementById('text').value = a.text;
+	
+	$('#ueberschrift').val(article.ueberschrift)
+	$('#autor').val(article.autor)
+	// Achtung! Datumsformat wurde korrigiert!
+	$('#datum').val(article.datum.split('T')[0]);
+	$('#anriss').val(article.anriss)
+	$('#text').val(article.text)
 	// Regulärer Ausdruck zum Ersetzen der Kommata ',' durch ', ' (mit Space)
-	document.getElementById('tags').value = a.tags.toString().replace(/,/g, ', ');	
-};
+	$('#tags').val(article.tags.toString().replace(/,/g, ', ')) 	
+
 
 function readForm() {
 	// Formularelemente auslesen
