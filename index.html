@@ -53,9 +53,8 @@ https://getbootstrap.com/docs/4.0/layout/grid/
 <script src="js/blog.js"></script>
 <script>
 	"use strict";
-	
-	
-	for(let i = 0; i < articles.length; i++)
+	$(document).ready(function() { 
+		for(let i = 0; i < articles.length; i++)
 		$('#inhalt').append(createArticle(articles[i]));
 		// // Sidebar erzeugen
 		 var sidebar = $('#sidebar');
@@ -66,6 +65,10 @@ https://getbootstrap.com/docs/4.0/layout/grid/
 			window.location.href=`suchergebnis.html?suchKey=${$('#searchquery').val()}`
 	 	
  	})
+
+});
+	
+	
 	</script> 
 
 </body>

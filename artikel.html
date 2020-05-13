@@ -40,30 +40,34 @@
 
 <script>
 	"use strict";
-	const urlParams = new URLSearchParams(window.location.search);
-	let id = urlParams.get('id');
-	if(!id)
-	 id='article1';
-		let article = getArticleById(id);
-		//und Artikel einhängen
-		//main.append(createArticle(articles[2]));
-		$('#inhalt').append(createArticle(article));
-		// // Sidebar erzeugen
-		 var sidebar = $('#sidebar');
-		 sidebar.append(createSidebar(articles));
+	$(document).ready(function() { 
 
-		 //Aufgabe 4
-		 $('#searchBtn').click(function() {
-	 window.location.href='suchergebnis.html';	
-	 })
-	 
+		const urlParams = new URLSearchParams(window.location.search);
+		let id = urlParams.get('id');
+		if(!id)
+		 id='article1';
+			let article = getArticleById(id);
+			//und Artikel einhängen
+			//main.append(createArticle(articles[2]));
+			$('#inhalt').append(createArticle(article));
+			// // Sidebar erzeugen
+			 var sidebar = $('#sidebar');
+			 sidebar.append(createSidebar(articles));
+	
+			 //Aufgabe 4
+			 $('#searchBtn').click(function() {
+		 window.location.href='suchergebnis.html';	
+		 })
+		 
+	
+		function getArticleById(id){
+			for(let article of articles){
+			if(article.id === id)
+			return article;
+		}
+		 }
 
-	function getArticleById(id){
-		for(let article of articles){
-		if(article.id === id)
-		return article;
-	}
-	 }
+});
 	</script> 
 </body>
 </html>
